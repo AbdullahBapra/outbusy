@@ -1,0 +1,10 @@
+<!doctype html><html><body style="margin:0;overflow:hidden">
+<iframe id="f" style="border:0;width:1440px;height:900px"></iframe>
+<script>
+const q=new URLSearchParams(location.search);const f=document.getElementById('f');f.src=q.get('src');
+f.onload=()=>setTimeout(()=>{const d=f.contentDocument;
+  const panel=[...d.querySelectorAll('header nav .group > div')].find(x=>x.querySelector('[role=tablist]'));
+  if(panel){panel.style.visibility='visible';panel.style.opacity='1';panel.style.transform='none';}
+  const tab=+(q.get('tab')||0);const tabs=d.querySelectorAll('[role=tab]');if(tabs[tab])tabs[tab].dispatchEvent(new MouseEvent('mouseover',{bubbles:true}));
+},1500);
+</script></body></html>
